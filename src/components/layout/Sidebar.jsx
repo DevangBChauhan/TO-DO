@@ -79,24 +79,42 @@ const NAV_ITEMS = [
   }
 ];
 
-export default function Sidebar({ activePage, onNavigate }) {
+export default function Sidebar({ activePage, onNavigate, isOpen, onClose }) {
   const { settings } = useApp();
-  const userName = settings.name || 'SDET Student';
+  const userName = settings.name || 'SDET Aspirant';
+
+  function handleItemClick(id) {
+    onNavigate(id);
+    if (onClose) onClose();
+  }
 
   return (
-    <aside className="app-sidebar" data-testid="sidebar">
+    <aside className={`app-sidebar ${isOpen ? 'open' : ''}`} data-testid="sidebar">
       <div>
         {/* Brand Area */}
         <div className="sidebar-brand">
-          <div className="sidebar-brand-title">
-            <span className="sidebar-brand-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-              </svg>
-            </span>
-            Command Center
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className="sidebar-brand-title">
+              <span className="sidebar-brand-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </span>
+              Command Center
+            </div>
+
+            {/* Mobile Close Button */}
+            {onClose && (
+              <button
+                className="mobile-close-btn"
+                onClick={onClose}
+                aria-label="Close menu"
+              >
+                ✕
+              </button>
+            )}
           </div>
           <div className="sidebar-brand-sub">SDET Learning Path</div>
         </div>
@@ -107,7 +125,7 @@ export default function Sidebar({ activePage, onNavigate }) {
             <button
               key={item.id}
               className={`nav-item ${activePage === item.id ? 'active' : ''}`}
-              onClick={() => onNavigate(item.id)}
+              onClick={() => handleItemClick(item.id)}
               data-testid={`nav-${item.id}`}
             >
               <span className="nav-icon">{item.icon}</span>

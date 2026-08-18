@@ -901,3 +901,185 @@ body {
 .input:focus, .select:focus, .textarea:focus {
   border-color: var(--accent);
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE DESIGN SYSTEM (MOBILE, TABLET & DESKTOP)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.mobile-menu-btn {
+  display: none;
+}
+
+.mobile-close-btn {
+  display: none;
+}
+
+.sidebar-backdrop {
+  display: none;
+}
+
+/* ── Tablet Breakpoint (769px to 1024px) ── */
+@media (max-width: 1024px) {
+  .grid-top-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .page-2col-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app-main {
+    padding: 20px 24px 48px;
+  }
+}
+
+/* ── Mobile Breakpoint (< 768px) ── */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: flex;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    padding: 6px;
+    cursor: pointer;
+    margin-right: auto;
+    border-radius: 4px;
+  }
+
+  .mobile-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    backdrop-filter: blur(3px);
+  }
+
+  .app-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 270px;
+    transform: translateX(-100%);
+    z-index: 1000;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .app-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .app-header {
+    height: 52px;
+    padding: 0 16px;
+    justify-content: space-between;
+  }
+
+  .header-cta-btn {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+  }
+
+  .app-main {
+    padding: 16px 16px 40px;
+  }
+
+  .page-main-title,
+  .page-title {
+    font-size: 1.35rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .page-header button {
+    align-self: flex-start;
+  }
+
+  .grid-top-4 {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .page-2col-grid,
+  .roadmap-grid,
+  .grid-2,
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .timer-big-digits {
+    font-size: clamp(2.8rem, 13vw, 4.2rem);
+    margin-bottom: 16px;
+  }
+
+  .tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter-pill {
+    padding: 5px 8px;
+    font-size: 0.70rem;
+  }
+
+  .btn-add-task {
+    padding: 5px 10px;
+    font-size: 0.70rem;
+  }
+}
+
+/* ── Small Screen (< 480px) ── */
+@media (max-width: 480px) {
+  .grid-top-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card-val {
+    font-size: 1.25rem;
+  }
+
+  .timer-controls {
+    gap: 10px;
+  }
+
+  .timer-btn-sq {
+    width: 38px;
+    height: 38px;
+  }
+
+  .timer-btn-play {
+    width: 48px;
+    height: 48px;
+  }
+
+  .modal {
+    padding: 16px;
+  }
+}
