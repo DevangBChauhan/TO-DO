@@ -1,0 +1,8 @@
+/* App.css — app-level layout styles only */
+/* All design tokens and component styles are in index.css */
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
